@@ -1,4 +1,6 @@
-import {ArrowRight, Check, ChevronDown, ChevronRight, CirclePlay, Command, Menu, Moon, Sparkles, Sun, X, Zap, ShieldCheck, Brain, BarChart3, Users, Workflow, Layers3, Clock3, Bot, Target, MessageSquare} from 'lucide-react';
+import React, {useEffect, useState} from 'react';
+import {createRoot} from 'react-dom/client';
+import {ArrowRight, Check, ChevronDown, ChevronRight, CirclePlay, Menu, Moon, Sparkles, Sun, X, Zap, ShieldCheck, Brain, BarChart3, Users, Workflow, Target, MessageSquare} from 'lucide-react';
 import './styles.css';
 
 const features=[
@@ -31,29 +33,36 @@ const faqs=[
 ];
 
 function App(){
- const [menu,setMenu]=useState(false),[dark,setDark]=useState(false),[open,setOpen]=useState(0),[annual,setAnnual]=useState(true),[modal,setModal]=useState(false),[email,setEmail]=useState(''),[sent,setSent]=useState(false);
+ const [menu,setMenu]=useState(false);
+ const [dark,setDark]=useState(false);
+ const [open,setOpen]=useState(0);
+ const [annual,setAnnual]=useState(true);
+ const [modal,setModal]=useState(false);
+ const [email,setEmail]=useState('');
+ const [sent,setSent]=useState(false);
 
  useEffect(()=>{
-   document.documentElement.dataset.theme=dark?'dark':'light'
+  document.documentElement.dataset.theme=dark?'dark':'light';
  },[dark]);
 
  useEffect(()=>{
-   const reveal=()=>{
-     document.querySelectorAll('.reveal').forEach(el=>{
-       if(el.getBoundingClientRect().top<window.innerHeight*.88)
-         el.classList.add('visible')
-     })
-   };
-   reveal();
-   window.addEventListener('scroll',reveal);
-   return()=>window.removeEventListener('scroll',reveal)
+  const reveal=()=>{
+   document.querySelectorAll('.reveal').forEach(el=>{
+    if(el.getBoundingClientRect().top<window.innerHeight*.88){
+     el.classList.add('visible');
+    }
+   });
+  };
+  reveal();
+  window.addEventListener('scroll',reveal);
+  return()=>window.removeEventListener('scroll',reveal);
  },[]);
 
  const nav=['Features','Product','Solutions','Pricing','FAQ'];
 
  const scroll=id=>{
-   setMenu(false);
-   document.getElementById(id)?.scrollIntoView({behavior:'smooth'})
+  setMenu(false);
+  document.getElementById(id)?.scrollIntoView({behavior:'smooth'});
  };
 
  return <div className="app">
@@ -66,10 +75,10 @@ function App(){
 
     <div className={'nav-links '+(menu?'open':'')}>
      {nav.map(n=>
-       <button key={n} onClick={()=>scroll(n.toLowerCase())}>{n}</button>
+      <button key={n} onClick={()=>scroll(n.toLowerCase())}>{n}</button>
      )}
      <button className="mobile-close" onClick={()=>setMenu(false)}>
-       <X/>
+      <X/>
      </button>
     </div>
 
@@ -102,11 +111,13 @@ function App(){
        The AI workspace for ambitious teams
       </div>
 
-      <h1>Build better.<br/><em>Work smarter.</em></h1>
+      <h1>
+       Build better.<br/>
+       <em>Work smarter.</em>
+      </h1>
 
       <p>
-       NOVA brings projects, people and AI into one beautifully simple workspace —
-       so your team can spend less time managing work and more time creating impact.
+       NOVA brings projects, people and AI into one beautifully simple workspace — so your team can spend less time managing work and more time creating impact.
       </p>
 
       <div className="hero-actions">
@@ -121,7 +132,10 @@ function App(){
 
       <div className="trust-note">
        <div className="avatars">
-        <span>MC</span><span>AM</span><span>SW</span><span>+</span>
+        <span>MC</span>
+        <span>AM</span>
+        <span>SW</span>
+        <span>+</span>
        </div>
        <div>
         <strong>Loved by 2,000+ teams</strong>
@@ -134,9 +148,10 @@ function App(){
       <div className="glow"></div>
 
       <div className="dashboard">
-
        <div className="dash-top">
-        <div className="dots"><i></i><i></i><i></i></div>
+        <div className="dots">
+         <i></i><i></i><i></i>
+        </div>
         <span>Workspace / Q4 Launch</span>
         <span className="live"><b></b> Live</span>
        </div>
@@ -168,13 +183,17 @@ function App(){
           <div>
            <small>Team focus</small>
            <strong>86%</strong>
-           <div className="progress"><i style={{width:'86%'}}></i></div>
+           <div className="progress">
+            <i style={{width:'86%'}}></i>
+           </div>
           </div>
 
           <div>
            <small>Tasks done</small>
            <strong>24 <small>/ 31</small></strong>
-           <div className="progress"><i style={{width:'77%'}}></i></div>
+           <div className="progress">
+            <i style={{width:'77%'}}></i>
+           </div>
           </div>
 
           <div>
@@ -186,6 +205,7 @@ function App(){
          </div>
 
          <div className="task-panel">
+
           <div className="task-title">
            <strong>Today’s priorities</strong>
            <span>AI sorted</span>
@@ -205,6 +225,7 @@ function App(){
             <small>{x[2]}</small>
            </div>
           )}
+
          </div>
 
          <div className="ai-card">
@@ -228,7 +249,12 @@ function App(){
     <div className="container">
      <span>Trusted by teams at</span>
      <div className="logo-row">
-      <b>northstar</b><b>orbit</b><b>flux</b><b>vertex</b><b>luma</b><b>arc</b>
+      <b>northstar</b>
+      <b>orbit</b>
+      <b>flux</b>
+      <b>vertex</b>
+      <b>luma</b>
+      <b>arc</b>
      </div>
     </div>
    </section>
@@ -239,21 +265,38 @@ function App(){
      <div className="section-head reveal">
       <div>
        <span className="kicker">Everything in one place</span>
-       <h2>Powerful enough to scale.<br/><span>Simple enough to love.</span></h2>
+       <h2>
+        Powerful enough to scale.<br/>
+        <span>Simple enough to love.</span>
+       </h2>
       </div>
-      <p>From first idea to final delivery, NOVA keeps your team aligned without adding more complexity.</p>
+
+      <p>
+       From first idea to final delivery, NOVA keeps your team aligned without adding more complexity.
+      </p>
      </div>
 
      <div className="feature-grid">
       {features.map((f,i)=>
        <article className="feature-card reveal" key={f.title}>
-        <div className="feature-icon"><f.icon size={21}/></div>
+
+        <div className="feature-icon">
+         <f.icon size={21}/>
+        </div>
+
         <span className="number">0{i+1}</span>
+
         <h3>{f.title}</h3>
+
         <p>{f.text}</p>
-        <a href="#product" onClick={e=>{e.preventDefault();scroll('product')}}>
+
+        <a href="#product" onClick={e=>{
+         e.preventDefault();
+         scroll('product');
+        }}>
          Explore <ArrowRight size={15}/>
         </a>
+
        </article>
       )}
      </div>
@@ -266,11 +309,11 @@ function App(){
 
      <div className="product-copy reveal">
       <span className="kicker">Meet your AI copilot</span>
+
       <h2>A second brain for your entire team.</h2>
 
       <p>
-       NOVA understands your projects, priorities and patterns.
-       Ask questions in plain English, get instant summaries, or let AI handle the busywork.
+       NOVA understands your projects, priorities and patterns. Ask questions in plain English, get instant summaries, or let AI handle the busywork.
       </p>
 
       <ul>
@@ -280,7 +323,10 @@ function App(){
         'Spot blockers before they become problems',
         'Summarize any project with one click'
        ].map(x=>
-        <li key={x}><span><Check size={14}/></span>{x}</li>
+        <li key={x}>
+         <span><Check size={14}/></span>
+         {x}
+        </li>
        )}
       </ul>
 
@@ -302,11 +348,12 @@ function App(){
 
       <div className="chat bot">
        <div className="bot-avatar"><Sparkles size={13}/></div>
+
        <div>
         <strong>Here’s the pulse.</strong>
+
         <p>
-         Launch is <b>82% on track</b>.
-         The biggest risk is the mobile QA milestone, currently 2 days behind.
+         Launch is <b>82% on track</b>. The biggest risk is the mobile QA milestone, currently 2 days behind.
         </p>
 
         <div className="insight-box">
@@ -316,6 +363,7 @@ function App(){
           <small>Move QA review to Tuesday + assign Dev team.</small>
          </span>
         </div>
+
        </div>
       </div>
 
@@ -324,6 +372,7 @@ function App(){
       </div>
 
      </div>
+
     </div>
    </section>
 
@@ -332,22 +381,39 @@ function App(){
 
      <div className="center-head reveal">
       <span className="kicker">How NOVA fits your world</span>
-      <h2>One workspace.<br/><span>Every kind of team.</span></h2>
+      <h2>
+       One workspace.<br/>
+       <span>Every kind of team.</span>
+      </h2>
      </div>
 
      <div className="solutions">
 
       <div className="solution-main reveal">
        <div className="solution-tag">01 / PRODUCT</div>
-       <h3>Ship products<br/>without the chaos.</h3>
-       <p>Align roadmaps, engineering and design in one living workspace.</p>
-       <a href="#pricing">See product workflows <ArrowRight size={16}/></a>
+
+       <h3>
+        Ship products<br/>
+        without the chaos.
+       </h3>
+
+       <p>
+        Align roadmaps, engineering and design in one living workspace.
+       </p>
+
+       <a href="#pricing">
+        See product workflows <ArrowRight size={16}/>
+       </a>
 
        <div className="solution-art">
         <div className="orbit-ring"></div>
+
         <div className="floating-card">
          <Zap size={15}/>
-         <span><b>Release 4.2</b><small>Ready to ship</small></span>
+         <span>
+          <b>Release 4.2</b>
+          <small>Ready to ship</small>
+         </span>
         </div>
        </div>
       </div>
@@ -373,12 +439,14 @@ function App(){
        </div>
 
       </div>
+
      </div>
     </div>
    </section>
 
    <section className="stats">
     <div className="container stat-grid">
+
      {[
       ['2K+','Teams building with NOVA'],
       ['38%','Less time spent in meetings'],
@@ -390,6 +458,7 @@ function App(){
        <span>{b}</span>
       </div>
      )}
+
     </div>
    </section>
 
@@ -399,9 +468,15 @@ function App(){
      <div className="section-head reveal">
       <div>
        <span className="kicker">A calmer way to work</span>
-       <h2>Three steps.<br/><span>Zero busywork.</span></h2>
+       <h2>
+        Three steps.<br/>
+        <span>Zero busywork.</span>
+       </h2>
       </div>
-      <p>NOVA is designed around how teams actually work — not around adding another tool to manage.</p>
+
+      <p>
+       NOVA is designed around how teams actually work — not around adding another tool to manage.
+      </p>
      </div>
 
      <div className="steps">
@@ -424,18 +499,28 @@ function App(){
 
      <div className="center-head reveal">
       <span className="kicker">People love NOVA</span>
-      <h2>Less managing.<br/><span>More making.</span></h2>
+      <h2>
+       Less managing.<br/>
+       <span>More making.</span>
+      </h2>
      </div>
 
      <div className="testimonial-grid">
       {testimonials.map(([n,r,q,ini])=>
        <article className="quote reveal" key={n}>
+
         <div className="stars">★★★★★</div>
+
         <p>{q}</p>
+
         <div className="person">
          <span>{ini}</span>
-         <div><strong>{n}</strong><small>{r}</small></div>
+         <div>
+          <strong>{n}</strong>
+          <small>{r}</small>
+         </div>
         </div>
+
        </article>
       )}
      </div>
@@ -448,12 +533,17 @@ function App(){
 
      <div className="center-head reveal">
       <span className="kicker">Simple, transparent pricing</span>
-      <h2>Start free.<br/><span>Scale when ready.</span></h2>
+
+      <h2>
+       Start free.<br/>
+       <span>Scale when ready.</span>
+      </h2>
 
       <div className="billing">
        <button className={annual?'active':''} onClick={()=>setAnnual(true)}>
         Annual <em>Save 20%</em>
        </button>
+
        <button className={!annual?'active':''} onClick={()=>setAnnual(false)}>
         Monthly
        </button>
@@ -461,9 +551,10 @@ function App(){
      </div>
 
      <div className="price-grid">
+
       <Price
        title="Starter"
-       price={annual?0:0}
+       price={0}
        desc="For individuals and tiny teams."
        features={['Up to 5 members','AI planning','Unlimited tasks','3 projects']}
       />
@@ -482,6 +573,7 @@ function App(){
        desc="For growing organizations."
        features={['Unlimited members','Advanced permissions','Priority AI','Custom workflows','Dedicated support']}
       />
+
      </div>
 
     </div>
@@ -492,16 +584,21 @@ function App(){
 
      <div className="faq-intro reveal">
       <span className="kicker">Questions, answered</span>
+
       <h2>Good to know.</h2>
+
       <p>Still curious? Our team is one click away.</p>
+
       <button className="secondary" onClick={()=>setModal(true)}>
        Talk to us <ArrowRight size={16}/>
       </button>
      </div>
 
      <div className="faq-list">
+
       {faqs.map(([q,a],i)=>
        <div className={'faq-item reveal '+(open===i?'active':'')} key={q}>
+
         <button onClick={()=>setOpen(open===i?-1:i)}>
          <span>{q}</span>
          <ChevronDown size={18}/>
@@ -512,8 +609,10 @@ function App(){
           <p>{a}</p>
          </div>
         }
+
        </div>
       )}
+
      </div>
 
     </div>
@@ -524,14 +623,19 @@ function App(){
 
      <div>
       <span className="kicker">Ready when you are</span>
-      <h2>Your best work is<br/><i>waiting.</i></h2>
+      <h2>
+       Your best work is<br/>
+       <i>waiting.</i>
+      </h2>
      </div>
 
      <div>
       <p>Join thousands of teams building a smarter way to work.</p>
+
       <button className="primary light" onClick={()=>scroll('pricing')}>
        Start for free <ArrowRight size={18}/>
       </button>
+
       <small>No credit card required.</small>
      </div>
 
@@ -541,6 +645,7 @@ function App(){
   </main>
 
   <footer>
+
    <div className="container footer-top">
 
     <div>
@@ -574,31 +679,39 @@ function App(){
      </div>
 
     </div>
+
    </div>
 
    <div className="container footer-bottom">
     <span>© 2026 NOVA. Fictional company for demonstration.</span>
 
     <div>
-     <a href="#top"><Twitter size={16}/></a>
-     <a href="#top"><Linkedin size={16}/></a>
-     <a href="#top"><Github size={16}/></a>
+     <a href="#top" aria-label="X">𝕏</a>
+     <a href="#top" aria-label="LinkedIn">in</a>
+     <a href="#top" aria-label="GitHub">GH</a>
     </div>
    </div>
+
   </footer>
 
   {modal&&
    <div className="modal-backdrop" onClick={()=>setModal(false)}>
+
     <div className="modal" onClick={e=>e.stopPropagation()}>
 
      <button className="modal-close" onClick={()=>setModal(false)}>
       <X/>
      </button>
 
-     <div className="modal-icon"><Sparkles/></div>
+     <div className="modal-icon">
+      <Sparkles/>
+     </div>
 
      <h3>See NOVA in action</h3>
-     <p>Enter your email and we'll send a product demo preview.</p>
+
+     <p>
+      Enter your email and we'll send a product demo preview.
+     </p>
 
      {sent?
       <div className="success">
@@ -613,7 +726,11 @@ function App(){
         onChange={e=>setEmail(e.target.value)}
         placeholder="you@company.com"
        />
-       <button className="primary full" onClick={()=>email&&setSent(true)}>
+
+       <button
+        className="primary full"
+        onClick={()=>email&&setSent(true)}
+       >
         Request demo <ArrowRight size={17}/>
        </button>
       </>
@@ -647,7 +764,10 @@ function Price({title,price,desc,features,featured}){
 
   <ul>
    {features.map(x=>
-    <li key={x}><Check size={14}/>{x}</li>
+    <li key={x}>
+     <Check size={14}/>
+     {x}
+    </li>
    )}
   </ul>
 
@@ -655,3 +775,5 @@ function Price({title,price,desc,features,featured}){
 }
 
 createRoot(document.getElementById('root')).render(<App/>);
+
+  
