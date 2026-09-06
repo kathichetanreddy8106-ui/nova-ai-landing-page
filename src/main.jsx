@@ -1,6 +1,4 @@
-import React, {useEffect, useState} from 'react';
-import {createRoot} from 'react-dom/client';
-import {ArrowRight, Check, ChevronDown, ChevronRight, CirclePlay, Menu, Moon, Sparkles, Sun, X, Zap, ShieldCheck, Brain, BarChart3, Users, Workflow, Target, Twitter, Linkedin, Github} from 'lucide-react';
+import {ArrowRight, Check, ChevronDown, ChevronRight, CirclePlay, Command, Menu, Moon, Sparkles, Sun, X, Zap, ShieldCheck, Brain, BarChart3, Users, Workflow, Layers3, Clock3, Bot, Target, MessageSquare} from 'lucide-react';
 import './styles.css';
 
 const features=[
