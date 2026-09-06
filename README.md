@@ -4,7 +4,7 @@ A modern, responsive landing page for NOVA, a fictional AI productivity platform
 
 ## 🚀 Live Demo
 
-https://nova-ai-landing-page-cjj5.vercel.app
+https://nova-ai-landing-page-cji5.vercel.app/
 
 ## 🛠️ Technologies Used
 
